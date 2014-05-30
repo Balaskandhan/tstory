@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+<script>
+//we are reusing this URL, somove it to a variable
+base_url="/rest/stories/";
+//meta_url="/rest/metadata/";
+$(document).ready(function(){
+    
+    $.fn.serializeObject = function()
+    {
+       var o = {};
+       var a = this.serializeArray();
+       $.each(a, function() {
+           if (o[this.name]) {
+               if (!o[this.name].push) {
+                   o[this.name] = [o[this.name]];
+               }
+               o[this.name].push(this.value || '');
+           } else {
+               o[this.name] = this.value || '';
+           }
+       });
+       return o;
+    };
+    $('#story_form').submit(function(){
+    	console.log($('#story_form').serializeObject());
+    	postData($('#story_form').serializeObject());
+    	return false;
+    });
+    function postData(data){
+        $.ajax({
+                type: "PUT",
+                url: "/rest/stories/",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                crossDomain: true,
+                dataType: "json",
+                success: function (data, status, jqXHR) {
+                    alert("success");
+                },
+                error: function (jqXHR, status) {
+                    console.log(jqXHR);
+                    alert('failed, please check console for errors');
+                }
+             });
+       }
+});
+
+</script>
+</head>
+<body>
+	<h1 style="text-align: center;">Start a new Story</h1>
+	<form id="story_form" method="POST">
+	Enter the Title<br>	
+	<textarea rows="4" cols="50" maxlength="140"></textarea>
+	<br><br>Enter the storyline<br>	
+	<textarea rows="4" cols="50" maxlength="140"></textarea>
+	<input type="Submit">
+	</form>
+</body>
+</html>
