@@ -1,14 +1,15 @@
 package com.ts.stories;
 
 
-import java.io.InputStream;
+
 import java.util.ArrayList;
-import java.util.HashMap;
+
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -40,14 +41,16 @@ public class service {
 	
 	
 	
-	@PUT
+	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})
 	public Response createStory(String storyStr) {
 
 		try {
 			CreateStoryCommand create = new CreateStoryCommand();
 			story stry = mapper.readValue(storyStr, story.class);
+			//story stry= new;
+			//stry.setStory(storyStr);
 			boolean success = create.execute(stry);
 			String storyJSON = mapper.writeValueAsString(stry);
 			if (success) {

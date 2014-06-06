@@ -32,7 +32,7 @@ $(document).ready(function(){
     });
     function postData(data){
         $.ajax({
-                type: "PUT",
+                type: "POST",
                 url: "/rest/stories/",
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
@@ -55,9 +55,8 @@ $(document).ready(function(){
 	<h1 style="text-align: center;">Start a new Story</h1>
 	<form id="story_form" method="POST">
 	Enter the Title<br>	
-	<textarea rows="4" cols="50" maxlength="140"></textarea>
-	<br><br>Enter the storyline<br>	
-	<textarea rows="4" cols="50" maxlength="140"></textarea>
+	
+	<textarea rows="4" cols="50" maxlength="140" name= "story"></textarea>
 	<input type="Submit">
 	</form>
 </body>

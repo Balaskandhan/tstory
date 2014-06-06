@@ -1,11 +1,24 @@
 package com.ts.model;
 
-import java.io.IOException;
-import java.util.*;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class story {
 	 
-	Vector<String> story = new Vector<String>(3,2);
+	//Vector<String> story = new Vector<String>(3,2);
+	
+	private String storyText;
+	
+
+	public String getStory() {
+		return storyText;
+	}
+
+	public void setStory(String story) {
+		this.storyText = story;
+	}
 	
 	
 	

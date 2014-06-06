@@ -1,6 +1,6 @@
 package com.ts.command;
 
-import java.util.ArrayList;
+
 
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -18,8 +18,7 @@ public class CreateStoryCommand {
 
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			DBObject dbObject = (DBObject) JSON.parse(mapper
-					.writeValueAsString(stry));
+			DBObject dbObject = (DBObject) JSON.parse(mapper.writeValueAsString(stry));
 			stryCollection.insert(dbObject);
 		} catch (Exception e) {
 			System.out.println("ERROR during mapping book to Mongo Object");
@@ -29,4 +28,17 @@ public class CreateStoryCommand {
 		return true;
 	}
 
+	public static void main(String[] args) {
+		CreateStoryCommand create = new CreateStoryCommand();
+		story str = new story();
+		str.setStory("And this is my project");
+		if (create.execute(str)) {
+			System.out.println("SUCCESS:Book Created");
+		} else {
+			System.out.println("ERROR:Failed to create book");
+		}
+	}
+	
+	
+	
 }
