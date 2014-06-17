@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+<script>
+//we are reusing this URL, somove it to a variable
+base_url="/rest/stories/";
+link_url="/continuestory.html"
+$(document).ready(function(){
+    $.getJSON(base_url,function(data){
+    	console.log(data);
+    	$.each( data, function( count, object ) { 
+    		if(object.title != undefined) {//make sure isbn is valid
+    			//build the URL for the book
+    			$("div.stry_list").append( "<br/><a href='"+base_url+object.title+"'>"+ object.title+"</a>"  );
+    		}
+    	});
+    });
+});
+</script>
+</head>
+<body>
+<h1 style="text-align:center;">tweetstories</h1>
+<div class="stry_list"></div>
+
+</body>
+</html>

@@ -6,10 +6,27 @@
 <script>
 //we are reusing this URL, somove it to a variable
 base_url="/rest/stories/";
+
 //meta_url="/rest/metadata/";
 
-
+var i = 0;
 $(document).ready(function(){
+	// have to get the title rest service and link with this html document
+	   $.getJSON(title rest service ,function(data1){
+	    	console.log(data1);
+	    	$.each( data1, function( count, object ) { 
+	    		$("div.strysofar").append("<br/><p>"+"Title"+object.title+"</p>");
+	    		$.each(object.storybook, function () {
+	    			$("div.strysofar").append("<br/><p>"+object.storybook[i]+"</p>");
+	    		      i++
+	    		 });
+	    			//$("div.strysofar").append( "<br/><p>"+ object.*+"</p>"  );
+		    	
+	    	});
+	    });
+	
+	
+	
     
    $.fn.serializeObject = function()
     {
@@ -38,13 +55,13 @@ $(document).ready(function(){
     function postData(data){
         $.ajax({
                 type: "POST",
-                url: "/rest/stories/",
+                url: "/rest/stories/addstory",
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
                 crossDomain: true,
                 dataType: "json",
                 success: function (data, status, jqXHR) {
-                    alert("success");
+                    alert("Your storyline has been added!");
                 },
                 error: function (jqXHR, status) {
                     console.log(jqXHR);
@@ -56,14 +73,16 @@ $(document).ready(function(){
 
 </script>
 </head>
+
+<div class="strysofar"></div>
 <body>
 	<h1 style="text-align: center;">Continue the storyline</h1>
 	<form id="story_form" method="POST">
-	<br>	
-	<textarea  rows="4" cols="50" maxlength="140" name="story"></textarea>
-	<input type="Submit">
+		<br>
+		<textarea rows="4" cols="50" maxlength="140" name="storytext"></textarea>
+		<input type="Submit">
 	</form>
 	<br>
-	
+
 </body>
 </html>

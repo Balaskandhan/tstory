@@ -7,9 +7,11 @@
 //we are reusing this URL, somove it to a variable
 base_url="/rest/stories/";
 //meta_url="/rest/metadata/";
+
+
 $(document).ready(function(){
     
-    $.fn.serializeObject = function()
+   $.fn.serializeObject = function()
     {
        var o = {};
        var a = this.serializeArray();
@@ -26,20 +28,23 @@ $(document).ready(function(){
        return o;
     };
     $('#story_form').submit(function(){
+    
     	console.log($('#story_form').serializeObject());
     	postData($('#story_form').serializeObject());
+    	//console.log('{story:"'+document.getElementById('story_form1').value+'"}');
+    	//postData($('textarea#msg').val());
     	return false;
     });
     function postData(data){
         $.ajax({
                 type: "POST",
-                url: "/rest/stories/",
+                url: "/rest/stories",
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
                 crossDomain: true,
                 dataType: "json",
                 success: function (data, status, jqXHR) {
-                    alert("success");
+                    alert("Your storyline has been added!");
                 },
                 error: function (jqXHR, status) {
                     console.log(jqXHR);
@@ -52,12 +57,15 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-	<h1 style="text-align: center;">Start a new Story</h1>
+	<h1 style="text-align: center;">Start a tweetstory</h1>
 	<form id="story_form" method="POST">
-	Enter the Title<br>	
-	
-	<textarea rows="4" cols="50" maxlength="140" name= "story"></textarea>
-	<input type="Submit">
+		<br>Title:
+		<textarea rows="4" cols="30" maxlength="140" name="title"></textarea>
+		<br>First Storyline tweet:
+		<textarea rows="4" cols="50" maxlength="140" name="storytext"></textarea>
+		<input type="Submit">
 	</form>
+	<br>
+
 </body>
 </html>

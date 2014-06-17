@@ -31,7 +31,10 @@ public class CreateStoryCommand {
 	public static void main(String[] args) {
 		CreateStoryCommand create = new CreateStoryCommand();
 		story str = new story();
-		str.setStory("And this is my project");
+		str.setTitle("title1test");
+		str.setStorytext("And this is my project");
+		str.addstory(str.storybook, str.getStorytext());
+		//str.storybook.add("And this test story lines");
 		if (create.execute(str)) {
 			System.out.println("SUCCESS:Book Created");
 		} else {
