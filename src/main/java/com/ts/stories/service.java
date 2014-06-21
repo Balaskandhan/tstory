@@ -26,6 +26,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.ts.command.CreateStoryCommand;
 import com.ts.command.ListAllStoriesCommand;
+import com.ts.command.UpdateStory;
 import com.ts.model.story;
 import com.ts.command.GetStory;
 import com.mongodb.DBObject;
@@ -85,7 +86,7 @@ public class service {
 	public Response conStory(String storyStr) {
 
 		try {
-			CreateStoryCommand create = new CreateStoryCommand();
+			UpdateStory create = new UpdateStory();
 			GetStory a = new GetStory();
 			story stry = mapper.readValue(storyStr, story.class);
 			story nstry= null;

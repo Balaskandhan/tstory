@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body {
+    background-image: url(images/background.jpg); 
+div {
+  width:100%;
+  
+  text-align: center;
+  overflow: hidden;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;}
+ 
+
+  
+}
+</style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
 </script>
 <script>
@@ -13,7 +32,7 @@ $(document).ready(function(){
     	$.each( data, function( count, object ) { 
     		if(object.title != undefined) {//make sure isbn is valid
     			//build the URL for the book
-    			$("div.stry_list").append( "<br/><a href='"+base_url+object.title+"'>"+ object.title+"</a>"  );
+    			$("div.stry_list").append( "<br/><a href='"+link_url+"?id="+object.title+"'>"+ object.title+"</a>"  );
     		}
     	});
     });

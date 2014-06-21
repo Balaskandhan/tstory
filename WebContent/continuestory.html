@@ -1,26 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body {
+    background-image: url(images/background.jpg); 
+div {
+  width:100%;
+  
+  text-align: center;
+  overflow: hidden;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;}
+ 
+
+  
+}
+</style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
 </script>
 <script>
 //we are reusing this URL, somove it to a variable
 base_url="/rest/stories/";
 
+
 //meta_url="/rest/metadata/";
 
 var i = 0;
 $(document).ready(function(){
 	// have to get the title rest service and link with this html document
-	   $.getJSON(title rest service ,function(data1){
+	
+	var URL='mystory/'
+	var str = location.search.substr(1);
+	var n = str.indexOf("=");
+	var val = str.substring(n+1);
+	$("div.title").append("<br/><input type='text' name='title' value="+val+">");
+	$("div.strysofar").append("<br/><h1 style='text-align: center;'>Title:"+val+"</h1>");
+	$("div.strysofar").append("<br/><h2 style='text-align: center;'>"+"Story so far"+"</h2>");
+	   $.getJSON(base_url+val,function(data1){
 	    	console.log(data1);
-	    	$.each( data1, function( count, object ) { 
-	    		$("div.strysofar").append("<br/><p>"+"Title"+object.title+"</p>");
-	    		$.each(object.storybook, function () {
-	    			$("div.strysofar").append("<br/><p>"+object.storybook[i]+"</p>");
-	    		      i++
-	    		 });
-	    			//$("div.strysofar").append( "<br/><p>"+ object.*+"</p>"  );
+	    	$.each( data1, function( key, value ) { 
+	    		if(key!="_id"&&key!="storytext"&&key!="title"){
+	    			for(i = 0; i < value.length; i++)
+	    	           {
+	    		$("div.strysofar").append("<p style='text-align: center;'>"+value[i]+"</p>");}
+	            
+	    		}
+	    	
 		    	
 	    	});
 	    });
@@ -77,8 +106,10 @@ $(document).ready(function(){
 <div class="strysofar"></div>
 <body>
 	<h1 style="text-align: center;">Continue the storyline</h1>
-	<form id="story_form" method="POST">
+	<form id="story_form" method="POST" >
 		<br>
+		StoryTitle:<div class="title"></div><br>
+		New Storyline:<br>
 		<textarea rows="4" cols="50" maxlength="140" name="storytext"></textarea>
 		<input type="Submit">
 	</form>

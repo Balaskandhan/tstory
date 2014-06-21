@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body {
+    background-image: url(images/background.jpg); 
+div {
+  width:100%;
+  
+  text-align: center;
+  overflow: hidden;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;}
+ 
+
+  
+}
+</style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
 </script>
 <script>
@@ -58,10 +77,10 @@ $(document).ready(function(){
 </head>
 <body>
 	<h1 style="text-align: center;">Start a tweetstory</h1>
-	<form id="story_form" method="POST">
-		<br>Title:
+	<form id="story_form" method="POST" onsubmit="this.submit(); this.reset(); return false;">
+		<br>StoryTitle:<br>
 		<textarea rows="4" cols="30" maxlength="140" name="title"></textarea>
-		<br>First Storyline tweet:
+		<br>First Storyline tweet:<br>
 		<textarea rows="4" cols="50" maxlength="140" name="storytext"></textarea>
 		<input type="Submit">
 	</form>
