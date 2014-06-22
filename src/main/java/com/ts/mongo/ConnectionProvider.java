@@ -9,21 +9,23 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoException;
+import com.ts.properties.PropertiesLookup;
 
 public class ConnectionProvider {
 	
 
 	public DBCollection getCollection() {
 		try {
-
-			MongoClient mongo = new MongoClient("oceanic.mongohq.com", 10029);
+			PropertiesLookup aaa = new PropertiesLookup();
+			
+			MongoClient mongo = new MongoClient(aaa.getProperty("mongodbURL"), 10029);
 
 			DB db = mongo.getDB("vibbs");
 			if (db == null) {
 				System.out.println("Could not connect to Database");
 			}
 
-			boolean auth = db.authenticate("tsvibbs", "tsvibbs".toCharArray());
+			boolean auth = db.authenticate(aaa.getProperty("usn"), aaa.getProperty("psn").toCharArray());
 			if (auth == false) {
 				System.out.println("Could not authenticate");
 			}
@@ -40,6 +42,11 @@ public class ConnectionProvider {
 
 	}
 	
+	
+	public static void main(String[] aaa){
+		ConnectionProvider con =new ConnectionProvider();
+		System.out.println(con.getCollection());
+	}
 	
 
 

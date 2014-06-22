@@ -8,7 +8,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import com.ts.model.story;
+
 import com.ts.mongo.ConnectionProvider;
 
 public class SearchStory {

@@ -50,7 +50,7 @@ public class GetAccessToken {
                 is = new FileInputStream(file);
                 prop.load(is);
             }
-            if (args.length < 2) {
+           if (args.length < 2) {
                 if (null == prop.getProperty("oauth.consumerKey")
                         && null == prop.getProperty("oauth.consumerSecret")) {
                     // consumer key/secret are not set in twitter4j.properties

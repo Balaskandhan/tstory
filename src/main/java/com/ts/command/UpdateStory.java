@@ -1,16 +1,14 @@
 package com.ts.command;
 
-import java.net.UnknownHostException;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
+
 import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
+
 import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoException;
+
 
 
 import com.mongodb.util.JSON;
