@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 
 
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
@@ -27,6 +28,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import com.ts.command.CreateStoryCommand;
 import com.ts.command.ListAllStoriesCommand;
 import com.ts.command.UpdateStory;
+import com.ts.command.SearchStory;
 import com.ts.model.story;
 import com.ts.command.GetStory;
 import com.mongodb.DBObject;
@@ -47,10 +49,32 @@ public class service {
 	@GET
 	@Path("/{title}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getBook(@PathParam("title") String title) {
+	public Response getTitle(@PathParam("title") String title) {
 		GetStory get = new GetStory();
 		DBObject story = get.execute2(title);
 		return Response.status(200).entity(story).build();
+	}
+	
+	@GET
+	@Path("/search/{str}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getstory(@PathParam("str") String str) {
+		
+		try{
+		SearchStory get = new SearchStory();
+		ArrayList<DBObject> list = get.execute(str);
+	boolean success;
+	if(list!=null){ success =true;}else success=false;
+		
+		
+		if (success) {
+			return Response.status(200).entity(list).build();
+		} else
+			return Response.status(500).entity("").build();
+	} catch (Exception e) {
+		return Response.status(500).entity(e.toString()).build();
+	}
+	
 	}
 	
 	
@@ -106,7 +130,13 @@ public class service {
 	}
 	
 	
-	
+	@GET
+	@Path("twitter")
+	@Produces(MediaType.WILDCARD)
+	public Response textTwitter() {
+		
+		return Response.status(200).entity("").build();
+	}
 	
 	
 

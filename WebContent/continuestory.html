@@ -37,12 +37,16 @@ $(document).ready(function(){
 	var str = location.search.substr(1);
 	var n = str.indexOf("=");
 	var val = str.substring(n+1);
-	$("div.title").append("<br/><input type='text' name='title' value="+val+">");
-	$("div.strysofar").append("<br/><h1 style='text-align: center;'>Title:"+val+"</h1>");
+	//$("div.title").append("<br/><input type='text' name='title' value="+val+">");
+	
 	$("div.strysofar").append("<br/><h2 style='text-align: center;'>"+"Story so far"+"</h2>");
 	   $.getJSON(base_url+val,function(data1){
 	    	console.log(data1);
 	    	$.each( data1, function( key, value ) { 
+	    		
+	    		if(key=="title"){
+	    			$("div.t").append("<br/><h1 style='text-align: center;'>Title:"+value+"</h1>");
+	    			$("div.title").append("<br/><input type='text' name='title' value="+"'"+value+"'"+">");}
 	    		if(key!="_id"&&key!="storytext"&&key!="title"){
 	    			for(i = 0; i < value.length; i++)
 	    	           {
@@ -102,7 +106,7 @@ $(document).ready(function(){
 
 </script>
 </head>
-
+<div class="t"></div>
 <div class="strysofar"></div>
 <body>
 	<h1 style="text-align: center;">Continue the storyline</h1>

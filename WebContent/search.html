@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-image: url(images/background.jpg); 
+div {
+  width:100%;
+  
+  text-align: center;
+  overflow: hidden;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;}
+ 
+
+  
+}
+</style>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+<script>
+//we are reusing this URL, somove it to a variable
+base_url="/rest/stories/";
+
+$(document).ready(function(){
+
+    $('#str_form').submit(function(){
+    	console.log($('.str').val());
+    	getData($('.str').val());
+    	return false;
+    });
+    function getData(str){
+        $.ajax({
+                type: "GET",
+                url: "/rest/stories/search/"+str,
+                success: function (data1, status, jqXHR) {
+				
+				/* $('#result0').html('Story Found');
+				 
+                   
+								$('#result').html('Title:' +object.title );
+								$('#result1').html('Story so far:<br>' +object.storybook );*/
+								$.each( data1, function( count, object ) {  
+	    		
+	    		
+	    			$("div.t").append("<br/><h1 style='text-align: center;'>Title:"+object.title+"</h1>");
+	    			
+	    		
+	    			for(i = 0; i < object.storybook.length; i++)
+	    	           {
+	    		$("div.t").append("<p style='text-align: center;'>"+object.storybook[i]+"</p>");}
+	            
+	    		
+	    	
+		    	
+	    	});
+								
+                },
+                error: function (jqXHR, status) {
+                    console.log(jqXHR);
+                    $('#result4').html('Story  not Found !');
+                }
+             });
+       }
+});
+
+</script>
+</head>
+<body>
+<h1 style="text-align:center;">Search</h1>
+<form id="str_form" method="POST">
+Search for: <input type="text" class="str">
+
+<input type="Submit">
+</form>
+
+	<br><br><br>
+	<div id="result4"></div>
+<div class="t"></div>
+
+
+ 
+
+</body>
+</html>
