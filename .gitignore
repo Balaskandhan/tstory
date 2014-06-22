@@ -7,8 +7,7 @@ target/
 .DS_Store
  
 *.class
- 
-# twitter4j.properties # Package Files #
+  # Package Files #
 *.jar
 *.war
 *.ear
@@ -95,4 +94,3 @@ local.properties
 /build
 /build
 /build
-twitter4j.properties
