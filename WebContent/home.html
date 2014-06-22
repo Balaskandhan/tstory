@@ -25,6 +25,14 @@ span {
 </style>
 </head>
 <body >
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 
@@ -50,9 +58,9 @@ span {
   VIEW STORIES </button></a>
   
 </div></div>
-<div style="height:55px; width:100%;"><a target="_blank" href="https://twitter.com/intent/tweet?button_hashtag=tweetstory&text=My%20story" class="twitter-hashtag-button" data-lang="en" data-related="jasoncosta">
+<div style="height:55px; width:100%;"><a target="_blank" href="https://twitter.com/intent/tweet?button_hashtag=tweetstory&text=My%20story%20@%20http://tweetstory.herokuapp.com/home.html" class="twitter-hashtag-button" data-lang="en" data-related="jasoncosta">
 <button style="height:40px;width:70px;float:right"><img src="images/tweet.jpg" height=100%; width=100%; alt="My Pic"></button> </a>
-
+<div class="fb-like-box" data-href="https://www.facebook.com/FacebookDevelopers" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
 
 </div>
 

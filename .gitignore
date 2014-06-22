@@ -8,7 +8,7 @@ target/
  
 *.class
  
-# Package Files #
+# twitter4j.properties # Package Files #
 *.jar
 *.war
 *.ear
