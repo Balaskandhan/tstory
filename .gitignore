@@ -37,6 +37,8 @@ Desktop.ini
 .Spotlight-V100
 .Trashes
  
+twitter4j.properties
+
  
 ######################
 # Eclipse
@@ -93,4 +95,4 @@ local.properties
 /build
 /build
 /build
-/buildtwitter4j.properties
+/build
