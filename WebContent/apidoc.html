@@ -29,6 +29,8 @@ span {
 gets the function to return a list of all the DBObjects  i.e stories created so far<br>
 @POST:<br>
 Creates a New story object and saves it in the database<br>
+Parameters consumed : { title : "" , storytext : "" }<br>
+where both the parameters are set by the user. <br>
 <br>
 
 <h2>2.  "rest/stories/{title}"  -->></h2>
@@ -44,8 +46,11 @@ Search rest service created which can search by keyword in title field only..!!<
 <br>
 
 <h2>4.  "rest/stories/addstory"  -->></h2>
-@GET :<br>
+@POST :<br>
 this rest servie is used to update the existing story object in the database when the user adds the new storyline to the story.<br>
+Parameters consumed : { title : "" , storytext : "" }<br>
+Here the title is already set by getting the information from the rest service "rest/stories/{title}" <br>
+And the title is set by user to add on to the already existing story<br>
 <br>
 
 
